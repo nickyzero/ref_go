@@ -1,0 +1,6 @@
+How to install libraries by pip
+
+in virtual env
+(venv) C:venv> pip install -r requirements.txt
+ref site : http://pythoninreal.blogspot.kr/2013/12/virtualenv.html
+
