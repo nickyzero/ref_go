@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>base</title>
+</head>
+<body>
+    {% csrf_token %}
+    {% if user.is_active %}
+     <h2>Welcome {{user.username}}</h2>
+        <a href="{% url 'list' %}">쇼핑리스트</a>
+     <a href="{% url 'logout' %}">로그아웃</a>
+    {% else %}
+    <h2>Welcome, Anonymous</h2>
+    <h3>
+        <a href = "{% url 'login' %}">Login</a>
+        <a href = "{% url 'register' %}">Sign up</a>
+    </h3>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>shoppinglist</title>
+</head>
+<body>
+    <table>
+        <colgroup>
+            <col span="1" width=25%">
+            <col span="1" width=25%">
+            <col span="1" width=25%">
+            <col span="1" width=25%">
+
+        <thead>
+            <tr>
+                <th>상품</th>
+                <th>수량</th>
+                <th>구매여부</th>
+                <th>작성자</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for item in shopping_list %}
+            <tr>
+                <td>{{ item.product}}</td>
+                <td>{{ item.count}}</td>
+                <td>{{ item.check}}</td>
+                <td>{{ item.user }}</td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+</body>
+</html>
