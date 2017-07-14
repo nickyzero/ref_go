@@ -53,12 +53,14 @@ class Cleancheck(models.Model):
 
 # 냉장고
 class Refrigerator(models.Model):
+    # 냉장고 생성자
+    owner = models.ForeignKey(User, null=True)
     # 냉장고 이름
-    name = models.CharField(max_length=30, null=False)
+    name = models.CharField(max_length=30, primary_key=True, null=False)
     # 보관상태
-    inventory = models.ForeignKey(Inventory)
+    #inventory = models.ForeignKey(Inventory, null=True)
     # 오염도
-    clean = models.ForeignKey(Cleancheck)
+    #clean = models.ForeignKey(Cleancheck, null=True)
 
     def __str__(self):
         return self.name
@@ -81,18 +83,19 @@ class Shopping_list(models.Model):
     price = models.IntegerField(default=0)
     # 음식 구매 여부 check .. True or False
     check = models.BooleanField(default=False)
-
+    def __str__(self):
+        return '%s %d %d' % (self.product, self.count, self.price)
 
 # user을 onetoone으로 받는 Setting_user
 class Setting_user(models.Model):
-    user = models.OneToOneField(User, related_name='user')
+    user = models.OneToOneField(User, related_name='user', primary_key=True)
     # 냉장고 외래키 참조
     gid = models.ForeignKey(Refrigerator, null=True)
     # 사용자 닉네임
     nickname = models.CharField(max_length=15, blank=True, default='')
     # 장바구니 m:n
-    list = models.ManyToManyField(Shopping_list)
-    memo = models.ForeignKey(Memo, null=True)
+    #list = models.ManyToManyField(Shopping_list, null=True)
+    #memo = models.ForeignKey(Memo, null=True)
 
     def __str__(self):
         return self.user.username
@@ -107,6 +110,3 @@ def create_setting_user(sender, **kwargs):
 
 
 post_save.connect(create_setting_user, sender=User)
-
-
-

@@ -8,8 +8,15 @@
     {% csrf_token %}
     {% if user.is_active %}
      <h2>Welcome {{user.username}}</h2>
-        <a href="{% url 'list' %}">쇼핑리스트</a>
-     <a href="{% url 'logout' %}">로그아웃</a>
+            <a href="{% url 'list' %}">쇼핑리스트</a>
+            <a href="{% url 'logout' %}">로그아웃</a>
+
+        {% for S_user in Setting_user %}
+            {% if S_user.user.username == user.username and S_user.gid == null %}
+                <div style="font-size: small; padding: 5px;">** 냉장고를 등록하세요! <a href="{% url 'ref_register' S_user.pk %}">냉장고 등록</a></div>
+
+            {% endif %}
+        {% endfor %}
     {% else %}
     <h2>Welcome, Anonymous</h2>
     <h3>

@@ -3,35 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <title>shoppinglist</title>
+    <style>
+        table{
+            width: 100%;
+        }
+        table, thead, tbody, tr{
+            border: 1px solid #ececec;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        thead>tr>th {
+            padding: 4px;
+            background-color: lightblue;
+        }
+        tbody>tr>td {
+            padding: 6px;
+        }
+        div#paging_area{
+            padding: 6px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+    </style>
 </head>
 <body>
     <table>
         <colgroup>
-            <col span="1" width=25%">
-            <col span="1" width=25%">
-            <col span="1" width=25%">
-            <col span="1" width=25%">
-
+            <col span="1" width=15%">
+            <col span="1" width=15%">
+            <col span="1" width=15%">
+            <col span="1" width=15%">
+            <col span="1" width=15%">
         <thead>
             <tr>
+                <th>구매여부</th>
                 <th>상품</th>
                 <th>수량</th>
-                <th>구매여부</th>
-                <th>작성자</th>
+                <th>가격</th>
+                <th>수정/삭제</th>
             </tr>
         </thead>
 
         <tbody>
-        {% for item in shopping_list %}
+        {% for item in object_list %}
             <tr>
+                <td>{{ item.check}}</td>
                 <td>{{ item.product}}</td>
                 <td>{{ item.count}}</td>
-                <td>{{ item.check}}</td>
-                <td>{{ item.user }}</td>
+                <td>{{ item.price}}</td>
+                <td><a href="{% url 'listupdate' item.pk %}">수정하기</a>
+                    <a href="{% url 'listdelete' item.pk %}">삭제하기</a></td>
             </tr>
         {% endfor %}
 
         </tbody>
     </table>
+    <a href="{% url 'listadd' %}">추가하기</a>
+    <a href="{%url 'home'%}">메인으로</a>
+
 </body>
 </html>

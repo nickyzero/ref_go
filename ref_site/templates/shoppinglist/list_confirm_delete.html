@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>listdelete</title>
+</head>
+<body>
+    <h1>삭제하기</h1>
+    <form action="" method="post">{% csrf_token %}
+        <p>정말 삭제하시겠습니까? </p>
+        <div style="border:1px solid #48BAE4; height: auto; width: 500px; padding: 10px;">
+            <p>상품 : {{ object.product }}</p>
+            <p>가격 : {{ object.price }}</p>
+            <p>수량 : {{ object.count }}</p>
+        </div>
+        <input type="submit" value="삭제"/>
+    </form>
+</body>
+</html>
+

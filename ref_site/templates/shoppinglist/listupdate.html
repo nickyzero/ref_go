@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>listadd</title>
+    <style>
+        #add_div{
+            width : 500px;
+            height :300px;
+            padding : 15px;
+        }
+        div{
+            padding : 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>쇼핑리스트 수정</h1>
+    <form action="." method="post">{% csrf_token %}
+    {% if form.errors %}
+        <p>Wrong!!</p>
+    {% endif %}
+    <div id="add_div">
+        <div><h3>구매여부 : </h3> {{ form.check }}</div>
+        <div><h3>상품명 : </h3> {{ form.product }}</div>
+        <div><h3>개수 : </h3> {{ form.count }}</div>
+        <div><h3>가격 : </h3>{{ form.price }}</div>
+
+        <div>
+            <input type="submit" value="Submit"/>
+         </div>
+    </div>
+    </form>
+</body>
+</html>
+

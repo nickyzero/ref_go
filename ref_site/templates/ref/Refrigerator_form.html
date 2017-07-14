@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create_ref</title>
+</head>
+<body>
+    <h1>냉장고 생성</h1>
+    <form action="." method="post">{% csrf_token %}
+    {% if form.errors %}
+        <p>이미 존재하거나 올바르지 않은 id입니다. 다시 입력하세요</p>
+    {% endif %}
+    <div>
+        {{ form.name.label_tag }}  {{ form.name }}
+    </div>
+    <div>
+        <input type="submit" value="Submit"/>
+    </div>
+    </form>
+</body>
+</html>
