@@ -71,6 +71,9 @@ class Memo(models.Model):
     content = models.TextField(null=False)
     date = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.title
+
 
 # 장바구니
 class Shopping_list(models.Model):
@@ -83,6 +86,7 @@ class Shopping_list(models.Model):
     price = models.IntegerField(default=0)
     # 음식 구매 여부 check .. True or False
     check = models.BooleanField(default=False)
+
     def __str__(self):
         return '%s %d %d' % (self.product, self.count, self.price)
 

@@ -1,0 +1,1 @@
+default_app_config= 'ref_app.apps.RefAppConfig'
